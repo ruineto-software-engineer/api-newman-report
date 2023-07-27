@@ -34,7 +34,7 @@ newman.run({
         },
 
         response: {
-            code: args.response.code,
+            code: args.response.code ? args.response.code : "",
             body: JSON.parse(args.response.stream.toString()),
         },
     };
