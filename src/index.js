@@ -2,7 +2,7 @@ const newman = require('newman');
 const fs = require('fs-extra');
 
 // Replace 'path/to/your/postman_collection.json' with the actual path to your Postman collection JSON file
-const collectionFile = 'C:/Users/v8/Desktop/Workspace/RioCard/Projetos/api_recarga_mais/docs/api_recarga_mais.postman_collection.json';
+const collectionFile = "C:/Users/v8/Desktop/Workspace/RioCard/Projetos/api_recarga_mais/docs/api_recarga_mais.postman_collection.json";
 
 // Change your branch witch correct name (master/oracle)
 const branch = "oracle";
@@ -20,7 +20,7 @@ newman.run({
     const folderName = args.item.name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
     const fileName = `${folderName}.${args.item.name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.json`;
 
-    const body = args.request.body.toString();
+    const body = args.request.body ? args.request.body.toString() : "";
     const headersMembers = args.request.headers.members.filter(member => member.key !== 'Postman-Token');
 
     args.request.headers.members = headersMembers;
