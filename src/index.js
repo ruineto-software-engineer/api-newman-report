@@ -20,7 +20,7 @@ newman.run({
     const folderName = args.item.name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
     const fileName = `${folderName}.${args.item.name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.json`;
 
-    const body = args.request.body ? args.request.body.toString() : "";
+    const body = args.request.body ? JSON.stringify(args.request.body) : "";
     const headersMembers = args.request.headers.members.filter(member => member.key !== 'Postman-Token');
 
     args.request.headers.members = headersMembers;
@@ -30,7 +30,7 @@ newman.run({
             method: args.request.method,
             url: args.request.url.toString(),
             headers: args.request.headers,
-            body: body && JSON.parse(body.toString()),
+            body: body === "" ? "" : JSON.parse(body),
         },
 
         response: {
