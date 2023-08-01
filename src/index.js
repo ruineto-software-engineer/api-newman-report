@@ -34,8 +34,8 @@ newman.run({
         },
 
         response: {
-            code: args.response.code ? args.response.code : "",
-            body: JSON.parse(args.response.stream.toString()),
+            code: args.response ? args.response.code : "",
+            body: args.response ? JSON.parse(args.response.stream.toString()) : "",
         },
     };
 
